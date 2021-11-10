@@ -1,0 +1,14 @@
+###
+GET http://localhost:3000/ HTTP/1.1
+
+### Create
+POST http://localhost:3000/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "naem : 3",
+    "last": "last : 3.3"
+}
+
+###
+DELETE  http://localhost:3000/f7af3c2d-b8de-4eb7-a3d8-8ddcd867d41c HTTP/1.1
