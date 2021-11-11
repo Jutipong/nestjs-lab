@@ -10,21 +10,19 @@ export class TodoController {
 
 	// @ApiOperation({ summary: 'Get All' })
 	@Get("GetAll")
-	@ApiResponse({
-		status: 200,
-		description: 'The found record',
-		type: Todo,
-	})
+	@ApiResponse({ status: 200, description: 'ok', type: Todo })
 	getTodo() {
 		return this.todoService.getTodo()
 	}
 
 	@Post()
+	@ApiResponse({ status: 200, description: 'ok', type: Todo })
 	postTodo(@Body("name") name: string, @Body("last") last: string) {
 		return this.todoService.postTodo(name, last)
 	}
 
 	@Delete("/:id")
+	@ApiResponse({ status: 200, description: 'ok', type: String })
 	deleteTodoById(@Param("id") id: string) {
 		return this.todoService.deleteTodoById(id)
 	}
