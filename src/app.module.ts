@@ -1,3 +1,4 @@
+import { ConJobsService } from './scheduling/conjobs.service';
 import { SchedulingModule } from './scheduling/scheduling.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,6 +7,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 // entity
 import { Todo } from './todo/todo.entity';
 import { Scheduling_Daily, Scheduling_Weekly, Scheduling_Monthly } from './scheduling/scheduling.entity';
+import { TodoController } from './todo/todo.controller';
+import { TodoService } from './todo/todo.service';
 
 
 @Module({
@@ -21,11 +24,13 @@ import { Scheduling_Daily, Scheduling_Weekly, Scheduling_Monthly } from './sched
       ],
       synchronize: process.env.NODE_ENV != 'production',
     }),
-    // TypeOrmModule.forFeature([Todo]),
+    TypeOrmModule.forFeature([Todo]),
     ScheduleModule.forRoot(),
     SchedulingModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [TodoController],
+  providers: [
+    ConJobsService,
+    TodoService],
 })
 export class AppModule { }

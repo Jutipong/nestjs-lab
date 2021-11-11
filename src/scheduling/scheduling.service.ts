@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron, SchedulerRegistry } from '@nestjs/schedule';
 
 @Injectable()
 export class SchedulingService {
-
+	constructor(private schedulerRegistry: SchedulerRegistry) { }
 	private readonly logger = new Logger(SchedulingService.name);
 
 	// @Cron('10 * * * * *')
@@ -19,7 +19,39 @@ export class SchedulingService {
 		console.log(myDate)
 	}
 
+	// @Cron('* * 8 * * *', {
+	// 	name: 'notifications',
+	// })
+	// triggerNotifications() {
+	// 	console.log("triggerNotifications");
+	// }
 
+	// addCronJob(name: string, seconds: string) {
+	// 	const job = new CronJob(`${seconds} * * * * *`, () => {
+	// 		this.logger.warn(`time (${seconds}) for job ${name} to run!`);
+	// 	});
 
+	// 	this.schedulerRegistry.addCronJob(name, job);
+	// 	job.start();
+
+	// 	this.logger.warn(
+	// 		`job ${name} added for each minute at ${seconds} seconds!`,
+	// 	);
+	// }
+
+	
+
+	// addCronJob(name: string, seconds: string) {
+	// 	const job = new CronJob(`${seconds} * * * * *`, () => {
+	// 		this.logger.warn(`time (${seconds}) for job ${name} to run!`);
+	// 	});
+
+	// 	this.schedulerRegistry.addCronJob(name, job);
+	// 	job.start();
+
+	// 	this.logger.warn(
+	// 		`job ${name} added for each minute at ${seconds} seconds!`,
+	// 	);
+	// }
 
 }
