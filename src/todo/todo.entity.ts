@@ -5,7 +5,7 @@ import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
 export class Todo {
 
 	@ApiProperty()
-	@PrimaryColumn()
+	@PrimaryGeneratedColumn('uuid')
 	id: string
 
 	@ApiProperty()
@@ -18,5 +18,5 @@ export class Todo {
 
 	@ApiProperty()
 	@Column({ name: 'age', type: 'decimal', default: 0 })
-	agex: number
+	age: number
 }

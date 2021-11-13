@@ -17,13 +17,10 @@ export class TodoService {
 
 	async postTodo(name: string, last: string) {
 		const todo = new Todo()
-		todo.id = uuidv4()
 		todo.name = name
 		todo.last = last
-		todo.agex = 33.3
 		await this.todoRepository.save(todo)
-
-		return this.todoRepository.find()
+		return todo
 	}
 
 	async deleteTodoById(id: string) {

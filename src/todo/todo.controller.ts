@@ -4,12 +4,12 @@ import { Todo } from './todo.entity';
 import { TodoService } from './todo.service';
 
 @ApiTags("Todo")
-@Controller("Todo")
+@Controller()
 export class TodoController {
 	constructor(private todoService: TodoService) { }
 
 	// @ApiOperation({ summary: 'Get All' })
-	@Get("GetAll")
+	@Get()
 	@ApiResponse({ status: 200, description: 'ok', type: Todo })
 	getTodo() {
 		return this.todoService.getTodo()
